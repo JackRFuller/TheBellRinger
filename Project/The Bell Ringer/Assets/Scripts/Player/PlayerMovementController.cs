@@ -8,6 +8,7 @@ public class PlayerMovementController : MonoBehaviour
     //Components
     private PlayerAnimationController playerAnimController;
 
+    [SerializeField]
     private float moveSpeed = 3;
     private float gravity = -20f;
     private Controller2D controller;
