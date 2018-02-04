@@ -19,6 +19,32 @@ public class PlayerAnimationController : MonoBehaviour
 
     public void UpdateMeshRotation(Vector3 movement)
     {
-        transform.rotation = Quaternion.LookRotation(movement);
+        if(movement != Vector3.zero)
+            transform.rotation = Quaternion.LookRotation(movement);
+    }
+
+    public void PlayerIsFalling()
+    {
+        playerAnimController.SetBool("isFalling", true);
+    }
+
+    public void PlayerLanding(bool isHardLanding)
+    {
+        playerAnimController.SetBool("isFalling", false);
+
+        if (isHardLanding)
+        {
+            playerAnimController.SetBool("hardLanding", true);
+        }
+        else
+        {
+            playerAnimController.SetBool("softLanding", true);
+        }
+    }
+
+    public void PlayerHasLanded()
+    {
+        playerAnimController.SetBool("hardLanding", false);
+        playerAnimController.SetBool("softLanding", false);
     }
 }
